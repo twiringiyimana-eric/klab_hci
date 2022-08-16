@@ -39,7 +39,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/posts', [PostController::class, 'index']);
 
     // protected route for getting a single post
-    Route::get('/posts/{id}', [PostController::class, 'show']);
+    Route::get('/show/{id}', [PostController::class, 'show']);
 
     // protected route for updating a post
     Route::put('/update/{id}', [PostController::class, 'update']);
