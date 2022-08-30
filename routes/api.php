@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 |
 */
 
-// public route for registering a new user
+// public route for registering a new userex
 Route::post('/register', [AuthController::class, 'register']);
 
 // public route for logging in a user
@@ -39,7 +39,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/posts', [PostController::class, 'index']);
 
     // protected route for getting a single post
-    Route::get('/show/{id}', [PostController::class, 'show']);
+    Route::get('/posts/{id}', [PostController::class, 'posts']);
 
     // protected route for updating a post
     Route::put('/update/{id}', [PostController::class, 'update']);
