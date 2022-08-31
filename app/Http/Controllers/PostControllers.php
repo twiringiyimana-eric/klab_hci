@@ -77,13 +77,13 @@ class PostControllers extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Team_member $id,request $request)
     {
-        //
-        $post=posts::find($id);
-        $post->update($request->all());
-        return $post;
-
+        
+        
+          $id->update($request->all());
+         return response(['results'=>$id],200);
+        
     }
     /**
      * Remove the specified resource from storage.
