@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Team_member;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class PostControllers extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,26 +25,26 @@ class PostController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param
+     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function team(Request $request)
     {
         # code...
         $this->validate(
             $request,
             [
-                'title' => 'required',
-                'content' => 'required',
+                'name' => 'required',
+                'position' => 'required',
                 'image' => 'required'
             ]
         );
         $imagePath = $request->image->store('/uploads', 'public');
-        $post = $request->user()->posts()->create(
+    $post=Team_member::create(
             [
-                'title' => $request->title,
-                'content' => $request->content,
+                'name' => $request->name,
+                'position' => $request->position,
                 'image' => $imagePath
             ]
         );
@@ -77,30 +77,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        $input = $request->all();
-   
-        $post = Post::make($input, [
-            'title' => 'required',
-            'content' => 'required'
-        ]);
-   
-       if($post->fail()){
-            return $this->sendError('Post Error.', $post->errors());       
-        }
-   
-        $post->name = $input['title'];
-        $post->content = $input['content'];
-        $post->save();
-   
-        return response()->json([
-            "success" => true,
-            "message" => "Post updated successfully.",
-            "data" => $post
-        ]);
-    }
+        //
+        $post=posts::find($id);
+        $post->update($request->all());
+        return $post;
 
+    }
     /**
      * Remove the specified resource from storage.
      *
