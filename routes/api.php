@@ -18,7 +18,7 @@ use App\Http\Controllers\PostControllers;
 
 // public route for registering a new userex
 Route::post('/register', [AuthController::class, 'register']);
-
+Route::post('/test', [AuthController::class, 'test']);
 // public route for logging in a user
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -38,11 +38,6 @@ Route::middleware('auth:sanctum')->group(function () {
      // protected route for creating a new post
      Route::post('/posts', [PostController::class, 'store']);
 
-    // protected route for getting all posts
-    Route::get('/posts', [PostController::class, 'index']);
-
-    // protected route for getting a single post
-    Route::get('/posts/{id}', [PostController::class, 'posts']);
 
     // protected route for updating a post
     Route::put('/update/{id}', [PostController::class, 'update']);
@@ -50,3 +45,8 @@ Route::middleware('auth:sanctum')->group(function () {
     // protected route for deleting a post
     Route::delete('/delete/{id}', [PostController::class, 'delete']);
 });
+ // protected route for getting all posts
+ Route::get('/posts', [PostController::class, 'index']);
+
+ // protected route for getting a single post
+ Route::get('/posts/{id}', [PostController::class, 'posts']);
