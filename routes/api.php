@@ -50,3 +50,4 @@ Route::middleware('auth:sanctum')->group(function () {
 
  // protected route for getting a single post
  Route::get('/posts/{id}', [PostController::class, 'posts']);
+ Route::delete('/delete/{id}', [PostController::class, 'delete']);
