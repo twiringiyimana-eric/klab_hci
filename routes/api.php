@@ -41,7 +41,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // protected route for updating a post
     Route::put('/update/{id}', [PostController::class, 'update']);
-
+    Route::delete('/delete/{id}', [PostController::class, 'delete']);
     // protected route for deleting a post
     Route::delete('/delete/{id}', [PostController::class, 'delete']);
 });
@@ -50,4 +50,4 @@ Route::middleware('auth:sanctum')->group(function () {
 
  // protected route for getting a single post
  Route::get('/posts/{id}', [PostController::class, 'posts']);
- Route::delete('/delete/{id}', [PostController::class, 'delete']);
+ 
