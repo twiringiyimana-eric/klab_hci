@@ -42,16 +42,16 @@ class PostController extends Controller
         );
          //$imagePath = $request->image->store('/uploads', 'public');
         $file=cloudinary()->uploadFile($request->file('image')->getRealPath())->getSecurePath();
-        $post = $request->user()->posts()->create(
-            [
-                'title' => $request->title,
-                'content' => $request->content,
-               ' image'=> $file
-        ]);
+        // $post = $request->user()->posts()->create(
+        //     [
+        //         'title' => $request->title,
+        //         'content' => $request->content,
+        //        ' image'=> $file
+        // ]);
 
         return response()->json([
             'message' => 'success',
-            'post' => $post
+            'post' => $file
         ], 200);
     }
 
