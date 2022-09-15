@@ -32,8 +32,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
         # code...
-        $this->validate(
-            $request,
+        //$this->validate(
+            $request->validate(
             [
                 'title' => 'required',
                 'content' => 'required',
@@ -41,12 +41,12 @@ class PostController extends Controller
             ]
         );
     // $imagePath = $request->image->store('/uploads', 'public');
-        $file=cloudinary()->uploadFile($request->file('image')->getRealpath())->getSecurepath();
+       // $file=cloudinary()->uploadFile($request->file('image')->getRealpath())->getSecurepath();
         $post = $request->user()->posts()->create(
             [
                 'title' => $request->title,
                 'content' => $request->content,
-                'image' => $file
+               
         ]);
 
         return response()->json([
