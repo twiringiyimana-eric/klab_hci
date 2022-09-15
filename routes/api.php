@@ -50,5 +50,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
  // protected route for getting a single post
  Route::get('/posts/{id}', [PostController::class, 'posts']);
- Route::post('/team', [PostControllers::class, 'team']);
+ Route::get('/team', [PostControllers::class, 'team']);
  Route::put('/posts/{id}', [PostController::class, 'update']);
