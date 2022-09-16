@@ -43,14 +43,14 @@ class PostControllers extends Controller
                 'type' => 'required'
             ]
         );
-            //$file =cloudinary()->uploadFile($request->file('image')->getRealPath())->getSecurePath();
+            $file =cloudinary()->uploadFile($request->file('image')->getRealPath())->getSecurePath();
             $post=Team_member::create(
             [
                 
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
                 'position' => $request->position,
-                //'image' =>$file,
+                'image' =>$file,
                 'twitter' =>$request->twitter,
                 'background' =>$request->background,
                 'type' => $request->type,
