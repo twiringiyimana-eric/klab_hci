@@ -31,9 +31,8 @@ class PostControllers extends Controller
      */
     public function team(Request $request)
     {
-        # code...
-        $this->validate(
-            $request,
+    
+            $request->validate(
             [
                 'firstname' => 'required',
                 'lastname' => 'required',
@@ -55,7 +54,7 @@ class PostControllers extends Controller
                 'twitter' => $request->twitter,
                 'background' => $request->background,
                 'type' => $request->type,
-                'user_id'=>auth()->user()->id
+              
             ]
         );
 
