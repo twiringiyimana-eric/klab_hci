@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('position');
             $table->string('twitter');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('background');
             $table->string('type');
             $table->timestamps();
