@@ -50,9 +50,9 @@ class PostControllers extends Controller
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
                 'position' => $request->position,
-                'image' =>  $file,
-                'twitter' => $request->twitter,
-                'background' => $request->background,
+                'image' =>$file,
+                'twitter' =>$request->twitter,
+                'background' =>$request->background,
                 'type' => $request->type,
               
             ]
