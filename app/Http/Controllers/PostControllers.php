@@ -55,6 +55,7 @@ class PostControllers extends Controller
                 'twitter' => $request->twitter,
                 'background' => $request->background,
                 'type' => $request->type,
+                'user_id'=>auth()->user()->id
             ]
         );
 

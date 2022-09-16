@@ -14,7 +14,8 @@ class Team_member extends Model
         'background',
         'type',
         'position',
-        'image'
+        'image',
+        'user_id'
     ];
 
     use HasFactory;
