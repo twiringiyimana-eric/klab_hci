@@ -35,17 +35,26 @@ class PostControllers extends Controller
         $this->validate(
             $request,
             [
-                'name' => 'required',
+                'firstname' => 'required',
+                'lastname' => 'required',
                 'position' => 'required',
-                'image' => 'required'
+                'image' => 'required',
+                'twitter' => 'required',
+                'background' => 'required',
+                'type' => 'required'
             ]
         );
         $imagePath = $request->image->store('/uploads', 'public');
-    $post=Team_member::create(
+            $post=Team_member::create(
             [
-                'name' => $request->name,
+                
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
                 'position' => $request->position,
-                'image' => $imagePath
+                'image' => $imagePath,
+                'twitter' => $request->twitter,
+                'background' => $request->background,
+                'type' => $request->type,
             ]
         );
 
@@ -67,6 +76,22 @@ class PostControllers extends Controller
         return response()->json([
             'message' => 'success',
             'post' => $post
+        ], 200);
+    }
+    public function viewPosts()
+    {
+        $post = Post::all();
+        return response()->json([
+            'message' => 'success',
+            'post' => $post
+        ], 200);
+    }
+    public function viewTeams()
+    {
+        $teams = Team_member::all();
+        return response()->json([
+            'message' => 'success',
+            'post' => $teams
         ], 200);
     }
 
@@ -95,6 +120,20 @@ class PostControllers extends Controller
     {
         //
         $post = Post::findOrFail($id);
+        $post->delete();
+        return response()->json([
+            'message' => 'success',
+            'post' => $post
+        ], 200);
+        return response()->json([
+            'message' => 'success',
+            'post' => $post
+        ], 200);
+    }
+    public function deleteTeam($id)
+    {
+        //
+        $post = Team_member::findOrFail($id);
         $post->delete();
         return response()->json([
             'message' => 'success',

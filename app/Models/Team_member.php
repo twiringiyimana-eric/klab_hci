@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Team_member extends Model
 {
     protected $fillable = [
-        'name',
+        'firstname',
+        'lastname',
+        'twitter',
+        'background',
+        'type',
         'position',
         'image'
     ];

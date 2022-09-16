@@ -52,3 +52,8 @@ Route::middleware('auth:sanctum')->group(function () {
  Route::get('/posts/{id}', [PostController::class, 'posts']);
  Route::get('/team/{id}', [PostControllers::class, 'team']);
  Route::put('/posts/{id}', [PostController::class, 'update']);
+
+ Route::get('/view-all-posts', [PostControllers::class, 'viewPosts']);
+ Route::put('/team/{id}', [PostControllers::class, 'update']);
+ Route::get('/view-all-teams', [PostControllers::class, 'viewTeams']);
+ Route::delete('/delete-team/{id}', [PostControllers::class, 'deleteTeam']);
