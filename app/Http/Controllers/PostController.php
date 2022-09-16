@@ -40,18 +40,19 @@ class PostController extends Controller
                 'image' => 'required'
             ]
         );
-         $imagePath = $request->image->store('/uploads', 'public');
-        // $file =cloudinary()->uploadFile($request->file('image')->getRealPath())->getSecurePath();
+         //$imagePath = $request->image->store('/uploads', 'public');
+        $file =cloudinary()->uploadFile($request->file('image')->getRealPath())->getSecurePath();
         $post = Post::create(
             [
                 'title' => $request->title,
                 'content' => $request->content,
-                'image'=>  $imagePath
+                'image'=>   $file,
+                'user_id'=>auth()->user()->id
         ]);
 
         return response()->json([
             'message' => 'success',
-            'post' => $file
+            'post' =>  $post
         ], 200);
     }
 
@@ -66,7 +67,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         return response()->json([
             'message' => 'success',
-            'post' => $post
+            'post' =>  $file
         ], 200);
     }
 
