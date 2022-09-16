@@ -40,13 +40,13 @@ class PostController extends Controller
                 'image' => 'required'
             ]
         );
-         //$imagePath = $request->image->store('/uploads', 'public');
-        $file=cloudinary()->uploadFile($request->file('image')->getRealPath())->getSecurePath();
+         $imagePath = $request->image->store('/uploads', 'public');
+        // $file =cloudinary()->uploadFile($request->file('image')->getRealPath())->getSecurePath();
         $post = Post::create(
             [
                 'title' => $request->title,
                 'content' => $request->content,
-                'image'=> $file
+                'image'=>  $imagePath
         ]);
 
         return response()->json([
