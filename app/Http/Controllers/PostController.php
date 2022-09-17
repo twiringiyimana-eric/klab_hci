@@ -49,7 +49,7 @@ class PostController extends Controller
                 'image'=>   $file,
                 'user_id'=>auth()->user()->id
         ]);
-
+     
         return response()->json([
             'message' => 'success',
             'post' =>  $post
